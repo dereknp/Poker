@@ -1,6 +1,5 @@
 #pragma once
 #include <iostream>
-#include "player.h"
 #include "deck.h"
 using namespace std;
 
