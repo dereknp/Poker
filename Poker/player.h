@@ -10,6 +10,6 @@ private:
 public:
   player();
   void show_info();
-  int bet();
+  int bet(int min_bet);
   void get_hand(card one, card two);
 };
