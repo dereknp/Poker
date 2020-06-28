@@ -13,4 +13,8 @@ public:
   game();
   void show_game_info();
   void deal();
+  void deal_flop();
+  void deal_turn();
+  void deal_river();
+  void winner();
 };
