@@ -2,7 +2,6 @@
 #include <iostream>
 #include <ctime>
 #include <random>
-#include "deck.h"
 #define DECK_SIZE 52
 using namespace std;
 
