@@ -22,14 +22,14 @@ void player::show_info()
   cout << "Chips remaining: " << money << endl;
 }
 
-int player::bet()
+int player::bet(int min_bet)
 {
   int bet_amount = 0;
   do
   {
     cout << "Enter bet: ";
     cin >> bet_amount;
-  } while(bet_amount > money);
+  } while(bet_amount > money && bet_amount < min_bet);
   money-=bet_amount;
   return bet_amount;
 }
