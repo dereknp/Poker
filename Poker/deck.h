@@ -2,25 +2,27 @@
 #include <iostream>
 #include <ctime>
 #include <random>
+#include <vector>
 #define DECK_SIZE 52
 using namespace std;
 
-typedef struct card
+struct card
 {
   std::string suit; // spades, hearts, diamonds, clubs
   int value; // ace = 1, king = 13
-}card;
+};
 
 class deck
 {
 private:
-  card main_deck[DECK_SIZE];
+  vector <card> main_deck;
 
 public:
   deck();
   void show_deck();
   void shuffle_deck();
-  card get_card();
+  vector <card> get_card(int num_cards);
+  vector <card> get_deck();
 };
 
 deck::deck()
@@ -38,6 +40,7 @@ deck::deck()
   {
     for(int j = 0; j < 13; j++)
     {
+      main_deck.push_back(card());
       main_deck[index].suit = suits[i];
       main_deck[index].value = j+1;
       index++;
@@ -67,14 +70,20 @@ void deck::shuffle_deck()
   }
 }
 
-card deck::get_card()
+vector <card> deck::get_card(int num_cards)
 {
-  // maybe optimize incrementing w/ circular array notation
-  static int idx = 0;
-  idx++;
-  if (idx >= 52)
+  vector <card> v;
+  rotate(main_deck.begin(), main_deck.begin() +1, main_deck.end()); //burns
+  for (int i = 0; i < num_cards; i++)
   {
-    idx = 0;
+    v.push_back(card());
+    v[i].value = main_deck[i].value;
+    v[i].suit = main_deck[i].suit;
   }
-  return main_deck[idx];
+  return v;
+}
+
+vector <card> deck::get_deck()
+{
+  return main_deck;
 }

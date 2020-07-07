@@ -16,7 +16,6 @@ Card::Card(int value, const std::string& suit) : value(value), suit(std::move(su
 Card::Card() : Card(-1, "") {}
 
 // form of LHS < RHS
-// LHS.operator<(RHS)
 // ex      5 "Diamonds" < 8 "Hearts"
 bool operator<(const card& rhs) {
 	// note ace has value 1

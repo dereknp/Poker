@@ -37,7 +37,7 @@ void game::show_game_info()
 void game::deal()
 {
   d.shuffle_deck();
-  x.get_hand(d.get_card(), d.get_card());
+  x.get_hand(d.get_card(2));
   x.show_info();
   pot_value += x.bet(pot_value);
 }
@@ -46,7 +46,7 @@ void game::deal_flop()
 {
   for (int i = 0; i < 3; i++)
   {
-    shared_cards[i] = d.get_card();
+    shared_cards[i] = d.get_card(3);
   }
   show_game_info();
   pot_value += x.bet(pot_value);
@@ -54,14 +54,14 @@ void game::deal_flop()
 
 void game::deal_turn()
 {
-  shared_cards[3] = d.get_card();
+  shared_cards[3] = d.get_card(1);
   pot_value += x.bet(pot_value);
   show_game_info();
 }
 
 void game::deal_river()
 {
-  shared_cards[4] = d.get_card();
+  shared_cards[4] = d.get_card(1);
   pot_value += x.bet(pot_value);
   show_game_info();
 }

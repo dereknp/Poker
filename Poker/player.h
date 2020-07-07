@@ -13,7 +13,7 @@ public:
   player();
   void show_info();
   int bet(int min_bet);
-  void get_hand(card one, card two);
+  void get_hand(vector <card> from_deck);
 };
 
 player::player()
@@ -37,6 +37,7 @@ void player::show_info()
 
 int player::bet(int min_bet)
 {
+  // need to fix betting logic
   int bet_amount = 0;
   do
   {
@@ -47,10 +48,10 @@ int player::bet(int min_bet)
   return bet_amount;
 }
 
-void player::get_hand(card one, card two)
+void player::get_hand(vector <card> from_deck)
 {
-  hand[0].value = one.value;
-  hand[0].suit = one.suit;
-  hand[1].value = two.value;
-  hand[1].suit = two.suit;
+  hand[0].value = from_deck[0].value;
+  hand[0].suit = from_deck[0].suit;
+  hand[1].value = from_deck[1].value;
+  hand[1].suit = from_deck[1].suit;
 }
