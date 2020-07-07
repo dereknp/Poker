@@ -1,6 +1,6 @@
 #pragma once
 #include <iostream>
-#include <ctime>
+#include <algorithm>
 #include <random>
 #include <vector>
 #define DECK_SIZE 52
@@ -58,16 +58,9 @@ void deck::show_deck()
 
 void deck::shuffle_deck()
 {
-  /*
-  optimize using built in shuffle method
-  */
   srand((unsigned)time(0));
-  for (int i = 0; i < 150; i++)
-  {
-    unsigned idx1 = rand() % DECK_SIZE;
-    unsigned idx2 = rand() % DECK_SIZE;
-    swap(main_deck[idx1], main_deck[idx2]);
-  }
+  unsigned seed = rand();
+  shuffle (main_deck.begin(), main_deck.end(), default_random_engine(seed));
 }
 
 vector <card> deck::get_card(int num_cards)

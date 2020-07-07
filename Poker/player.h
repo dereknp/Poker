@@ -8,11 +8,16 @@ class player
 private:
   card hand[2];
   int money;
+  string name;
 
 public:
   player();
+  void set_name(string x);
   void show_info();
   int bet(int min_bet);
+  void check();
+  void raise();
+  void fold();
   void get_hand(vector <card> from_deck);
 };
 
@@ -24,6 +29,11 @@ player::player()
     hand[i].value = -1;
     hand[i].suit = "None";
   }
+}
+
+void player::set_name(string x)
+{
+  name = x;
 }
 
 void player::show_info()
@@ -41,7 +51,7 @@ int player::bet(int min_bet)
   int bet_amount = 0;
   do
   {
-    cout << "Enter bet: ";
+    cout << name << " enter bet: ";
     cin >> bet_amount;
   } while(bet_amount > money && bet_amount < min_bet);
   money-=bet_amount;
